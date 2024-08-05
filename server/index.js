@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "./routes/index.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -11,6 +12,7 @@ app.use(json());
 app.use(cookieParser());
 app.use(cors());
 app.use("/api", router);
+app.use(errorHandler);
 
 const start = async () => {
   try {
